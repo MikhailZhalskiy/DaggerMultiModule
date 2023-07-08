@@ -1,0 +1,20 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "DaggerMultiModule"
+include ':app'
+include ':data_sources:ds_remote_api'
+include ':data_sources:ds_remote_impl'
+include ':repositories_api'
+include ':repositories_impl'
+include ':usecases_api'
+include ':usecases_impl'
+include ':common:data_model'
+include ':features:feature_list'
+include ':features:feature_detail'
+include ':common:injector'
