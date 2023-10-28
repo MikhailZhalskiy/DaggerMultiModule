@@ -11,5 +11,7 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.mw.example.feature_detail.impl.DetailFragment"
-        android:label="DetailFragment" />
+        android:label="DetailFragment" >
+        <deepLink app:uri="android-app://com.mw.example/action_global_detailFragment" />
+    </fragment>
 </navigation>

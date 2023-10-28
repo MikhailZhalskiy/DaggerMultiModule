@@ -10,6 +10,8 @@ import com.mw.example.feature_detail.impl.di.DetailDependencies
 import com.mw.example.feature_list.api.di.ListApi
 import com.mw.example.feature_list.impl.di.ListComponentHolder
 import com.mw.example.feature_list.impl.di.ListDependencies
+import com.mw.example.injector.BaseDependencies
+import com.mw.example.injector.ComponentDependenciesKey
 import com.mw.example.repositories_api.PersonRepository
 import com.mw.example.repositories_api.di.RepositoriesApi
 import com.mw.example.repositories_impl.di.RepositoriesComponentHolder
@@ -19,8 +21,10 @@ import com.mw.example.usecases_api.GetPerson
 import com.mw.example.usecases_api.di.UseCaseApi
 import com.mw.example.usecases_impl.di.UseCaseComponentHolder
 import com.mw.example.usecases_impl.di.UseCaseDependencies
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import dagger.multibindings.IntoMap
 import javax.inject.Singleton
 
 @Module
@@ -92,4 +96,18 @@ class AppModule {
         DetailComponentHolder.init(dependencies)
         return DetailComponentHolder.get()
     }
+}
+
+@Module
+interface BaseDependenciesModule {
+
+    @Binds
+    @IntoMap
+    @ComponentDependenciesKey(ListDependencies::class)
+    fun bindsListDependencies(dependencies: ListDependencies): BaseDependencies
+
+    @Binds
+    @IntoMap
+    @ComponentDependenciesKey(DetailDependencies::class)
+    fun bindsDetailDependencies(dependencies: DetailDependencies): BaseDependencies
 }

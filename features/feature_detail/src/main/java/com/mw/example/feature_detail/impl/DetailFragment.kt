@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.viewModels
 import com.mw.example.feature_detail.R
 import com.mw.example.feature_detail.impl.di.DetailComponentHolder
+import com.mw.example.injector.findComponentDependencies
 import javax.inject.Inject
 
 class DetailFragment : Fragment() {
@@ -24,6 +25,7 @@ class DetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        DetailComponentHolder.init(findComponentDependencies())
         DetailComponentHolder.getComponent().inject(this)
     }
 

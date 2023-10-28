@@ -5,7 +5,7 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Component(
-    modules = [AppModule::class]
+    modules = [AppModule::class, BaseDependenciesModule::class]
 )
 @Singleton
 abstract class AppComponent {
